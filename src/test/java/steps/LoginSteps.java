@@ -28,8 +28,10 @@ public class LoginSteps extends CommonMethods {
         WebElement usernameTextField = driver.findElement(By.id("txtUsername"));
         WebElement passwordTextField = driver.findElement(By.id("txtPassword"));
         //entering the credential
-        usernameTextField.sendKeys(ConfigReader.getPropertyValue("username"));
-        passwordTextField.sendKeys(ConfigReader.getPropertyValue("password"));
+        //usernameTextField.sendKeys(ConfigReader.getPropertyValue("username"));
+        //passwordTextField.sendKeys(ConfigReader.getPropertyValue("password"));
+        sendText(ConfigReader.getPropertyValue("username"), usernameTextField);
+        sendText(ConfigReader.getPropertyValue("password"), passwordTextField);
     }
 
     @When("user clicks on login button")
@@ -47,9 +49,11 @@ public class LoginSteps extends CommonMethods {
     public void user_enters_ess_username_and_password() {
        WebElement usernameField = driver.findElement(By.id("txtUsername"));
        WebElement passwordField = driver.findElement(By.id("txtPassword"));
-       //logged in via normal employee
-        usernameField.sendKeys("dalima123");
-        passwordField.sendKeys("Hum@nhrm123");
+        //logged in via normal employee
+        // usernameField.sendKeys("dalima123");
+        //passwordField.sendKeys("Hum@nhrm123");
+        sendText("dalima123", usernameField);
+        sendText("Hum@nhrm123", passwordField);
     }
 
     @When("user enters invalid admin username and password")
@@ -57,8 +61,10 @@ public class LoginSteps extends CommonMethods {
         WebElement usernameField = driver.findElement(By.id("txtUsername"));
         WebElement passwordField = driver.findElement(By.id("txtPassword"));
         //logged in via normal employee
-        usernameField.sendKeys("admin123");
-        passwordField.sendKeys("Hum@nhrm123");
+        //usernameField.sendKeys("admin123");
+        //passwordField.sendKeys("Hum@nhrm123");
+        sendText("admin123", usernameField);
+        sendText("Hum#n", passwordField);
     }
     @Then("error message is displayed")
     public void error_message_is_displayed() {

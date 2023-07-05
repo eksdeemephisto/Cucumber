@@ -1,9 +1,23 @@
 package utils;
 
+import com.google.common.collect.BoundType;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.DataInput;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 
 public class CommonMethods {
     public static WebDriver driver;
@@ -27,5 +41,64 @@ public class CommonMethods {
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    public static void sendText(String text, WebElement element) {
+        element.clear();
+        element.sendKeys(text);
+    }
+
+    public static WebDriverWait getWait() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        return wait;
+    }
+
+    public static void waitForClickability(WebElement element) {
+        getWait().until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static void click(WebElement element) {
+        waitForClickability(element);
+        element.click();
+    }
+
+    public static void selectFromDropdown(WebElement dropDown, String visibleText) {
+        Select sel = new Select(dropDown);
+        sel.selectByVisibleText(visibleText);
+    }
+
+    public static void selectFromDropdown(String value, WebElement dropDown) {
+        Select sel = new Select(dropDown);
+        sel.selectByValue(value);
+    }
+
+    public static void selectFromDropdown(WebElement dropDown, int index) {
+        Select sel = new Select(dropDown);
+        sel.selectByIndex(index);
+    }
+
+    public static byte[] takeScreenshot(String fileName) throws IOException {
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        //we write this line because cucumber accepts array of byte for screenshot
+        byte[] picBytes = ts.getScreenshotAs(OutputType.BYTES);
+        File screenShot = ts.getScreenshotAs(OutputType.FILE);
+        //in case if it doesn't find the file name or path it will throw an exception
+        try {
+            FileUtils.copyFile(screenShot,
+                    new File(Constants.SCREENSHOT_FILEPATH + fileName + " "
+                            + getTimeStamp("yyyy-MM-dd-HH-mm-ss") + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return picBytes;
+    }
+
+    public static String getTimeStamp(String pattern) {
+        //it returns the current date and time in java
+        Date date = new Date();
+        //this function sdf used to format the date as per the pattern we are passing
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        //this line is going to return the formatted date
+        return sdf.format(date);
     }
 }

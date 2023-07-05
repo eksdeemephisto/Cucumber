@@ -1,9 +1,9 @@
 Feature: Login related scenarios
 
   Background:
-    Given user is navigated to HRMS application
+    #Given user is navigated to HRMS application
 
-  @sprint1 @regression @smoke @newTestcase @newFeature @sprint2 @login @test
+  @sprint1 @regression @smoke @newTestcase @newFeature @sprint2 @login
   Scenario: Valid admin login
     #dont add anything in the step after creating step def
     #Given user is navigated to HRMS application
