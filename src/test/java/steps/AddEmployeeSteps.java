@@ -13,33 +13,33 @@ import static utils.CommonMethods.driver;
 public class AddEmployeeSteps extends CommonMethods {
     @Given("user clicks on PIM option")
     public void user_clicks_on_pim_option() {
-        WebElement pimOption = driver.findElement(By.id("menu_pim_viewPimModule"));
+        //WebElement pimOption = driver.findElement(By.id("menu_pim_viewPimModule"));
         //pimOption.click();
-        click(pimOption);
+        click(dashboardPage.pimOption);
     }
 
     @When("user clicks on add employee button")
     public void user_clicks_on_add_employee_button() {
-        WebElement addEmployeeButton = driver.findElement(By.id("menu_pim_addEmployee"));
+        //WebElement addEmployeeButton = driver.findElement(By.id("menu_pim_addEmployee"));
         //addEmployeeButton.click();
-        click(addEmployeeButton);
+        click(dashboardPage.addEmployeeButton);
     }
 
     @When("user enters firstname and lastname")
     public void user_enters_firstname_and_lastname() {
-        WebElement firstNameTextField = driver.findElement(By.id("firstName"));
-        WebElement lastNameTextField = driver.findElement(By.id("lastName"));
+        //WebElement firstNameTextField = driver.findElement(By.id("firstName"));
+        //WebElement lastNameTextField = driver.findElement(By.id("lastName"));
         //firstNameTextField.sendKeys("aendro");
         //lastNameTextField.sendKeys("farewell");
-        sendText("aendro", firstNameTextField);
-        sendText("farewell", lastNameTextField);
+        sendText("aendro", addEmployeePage.firstNameField);
+        sendText("farewell", addEmployeePage.lastNameField);
     }
 
     @When("user clicks on save button")
     public void user_clicks_on_save_button() {
-        WebElement saveButton = driver.findElement(By.id("btnSave"));
+        //WebElement saveButton = driver.findElement(By.id("btnSave"));
         //saveButton.click();
-        click(saveButton);
+        click(addEmployeePage.saveButton);
     }
 
     @Then("employee added successfully")
