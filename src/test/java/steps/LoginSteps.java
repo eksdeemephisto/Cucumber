@@ -6,6 +6,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.Message;
 import pages.LoginPage;
 import utils.CommonMethods;
 import utils.ConfigReader;
@@ -79,5 +80,12 @@ public class LoginSteps extends CommonMethods {
         System.out.println("Error message is displayed");
     }
 
+    @When("user enters {string} and {string} and verifying the {string} for the combination")
+    public void user_enters_and_and_verifying_the_for_the_combinations
+            (String username, String password, String errorMessage){
+            sendText(username, loginPage.usernameField);
+            sendText(password, loginPage.passwordField);
+            click(loginPage.loginButton);
+    }
 
 }
