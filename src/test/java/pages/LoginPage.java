@@ -7,15 +7,15 @@ import utils.CommonMethods;
 
 public class LoginPage extends CommonMethods {
 
-    @FindBy(id="txtUsername")
+    @FindBy(id = "txtUsername")
     public WebElement usernameField;
-    @FindBy(id="txtPassword")
+    @FindBy(id = "txtPassword")
     public WebElement passwordField;
-    @FindBy(id="btnLogin")
+    @FindBy(id = "btnLogin")
     public WebElement loginButton;
 
     //to initialize all the elements of this page we have to call them inside constructor
-    public LoginPage(){
+    public LoginPage() {
         PageFactory.initElements(driver, this);
     }
 

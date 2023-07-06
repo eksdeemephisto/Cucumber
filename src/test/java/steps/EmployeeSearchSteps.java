@@ -2,11 +2,7 @@ package steps;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import utils.CommonMethods;
-
-import java.time.Duration;
 
 public class EmployeeSearchSteps extends CommonMethods {
     @When("user clicks on PIM option and Employee list option")

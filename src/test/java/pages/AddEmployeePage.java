@@ -7,16 +7,16 @@ import utils.CommonMethods;
 
 public class AddEmployeePage extends CommonMethods {
 
-    @FindBy(id ="firstName")
+    @FindBy(id = "firstName")
     public WebElement firstNameField;
-    @FindBy(id ="middleName")
+    @FindBy(id = "middleName")
     public WebElement middleNameField;
-    @FindBy(id ="lastName")
+    @FindBy(id = "lastName")
     public WebElement lastNameField;
-    @FindBy(id ="btnSave")
+    @FindBy(id = "btnSave")
     public WebElement saveButton;
 
-    public AddEmployeePage(){
+    public AddEmployeePage() {
         PageFactory.initElements(driver, this);
     }
 }

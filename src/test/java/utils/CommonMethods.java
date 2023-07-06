@@ -1,6 +1,5 @@
 package utils;
 
-import com.google.common.collect.BoundType;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,7 +12,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import steps.PageInitializer;
 
-import java.io.DataInput;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
