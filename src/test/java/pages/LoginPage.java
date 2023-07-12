@@ -13,6 +13,8 @@ public class LoginPage extends CommonMethods {
     public WebElement passwordField;
     @FindBy(id = "btnLogin")
     public WebElement loginButton;
+    @FindBy(id = "spanMessage")
+    public  WebElement errorMessageField;
 
     //to initialize all the elements of this page we have to call them inside constructor
     public LoginPage() {

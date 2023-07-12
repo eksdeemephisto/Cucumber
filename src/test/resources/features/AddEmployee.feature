@@ -23,7 +23,7 @@ Feature: Adding employee in HRMS application
 
   @outline
   Scenario Outline: adding multiple employees using scenario outline
-    When user enters "<firstName>" and "<middleName>" and "<lastName>"
+    When user enters "<firstName>" and "<middleName>" and "<lastName>" in data driven format
     And user clicks on save button
     Then employee added successfully
     Examples:
@@ -31,3 +31,16 @@ Feature: Adding employee in HRMS application
       | leny      | darzi      | fraud    |
       | paster    | surma      | shalli   |
       | sana      | caty       | aim      |
+
+  @datatable
+  Scenario: adding multiple employees using data table
+    When user enters firstname and middlename and lastname and verify employee has added
+      | firstName | middleName | lastName |
+      | zara      | ms         | zaca     |
+      | mary      | ms         | django   |
+      | sadam     | ms         | adam     |
+
+  @excel
+  Scenario: adding multiple employees using excel files
+    When user adds multiple employees using excel from "Sheet1" and verify it
+

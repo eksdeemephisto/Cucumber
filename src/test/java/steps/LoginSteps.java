@@ -3,6 +3,7 @@ package steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import utils.CommonMethods;
@@ -75,12 +76,16 @@ public class LoginSteps extends CommonMethods {
         System.out.println("Error message is displayed");
     }
 
-    @When("user enters {string} and {string} and verifying the {string} for the combination")
-    public void user_enters_and_and_verifying_the_for_the_combinations
-            (String username, String password, String errorMessage) {
+
+    @When("user enters {string} and {string} and verifying the {string} for the combinations")
+    public void user_enters_and_and_verifying_the_for_the_combinations(String username, String password, String errorMessageExpected) {
         sendText(username, loginPage.usernameField);
         sendText(password, loginPage.passwordField);
         click(loginPage.loginButton);
+        //fetching the error message from the web element
+        String errorMessageActual = loginPage.errorMessageField.getText();
+        //error message coming from feature file too which we can compare
+        Assert.assertEquals("value does not match", errorMessageExpected, errorMessageActual);
     }
 
 }
